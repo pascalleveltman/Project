@@ -2,26 +2,23 @@
 # Pascalle Veltman, 11025646
 
 ## Problem Statement
-Every country in Europe has different crime rates and categories. What kind of crimes are most committed in what countries? The answer to this question can be helpful in knowing where to spend extra money to successfully fight these crimes.
+Every country in Europe has different crime rates and categories. Are there more violent than not violent crimes in a certain country? And what kind of crimes are most committed? The answer to this question can be helpful in knowing where to spend extra money to successfully fight these crimes.
 
 ## Solution
-In this project, the solution to this problem is an interactive map of Europe which clarifies the crime rates per country. The plan made for this is subscribed below and if there is time left, an extra dimension can be added.
+In this project, the answer to the questions in this problem can be shown by interactive images. The plan made for this is subscribed below and if there is time left, an extra dimension can be added.
 
   * Plan
-    With an interactive map of Europe, the crime rate of a country can be inspected per category. The darker the country, the higher the (average) crime rate per year.
 
-    [plaatje]
+    Format: ![Plan](/Users/pascalleveltman/Desktop/plan)
 
-    When you click on a country, a bar chart appears. This chart shows the total crimes committed per year in that country (2000-2017).
+    Primarily, a zoomable sunburst graph is shown. This sunburn shows crime rate of the year selected by a slide from 2000 until 2017 of North, West, East or South Europe in the first ring. The second selects the precise country. The third ring specifies which part of that average crime rate is violent, and which is not violent. Because there are many different countries, the choice is made to only use three rings (and exclude the subcategories of violent and not violent crimes) in order to keep a clear view.
 
-    [plaatje]
+    When you click on a country, next to the sunburst a line chart shows the total crime rate of that country per year from 2000 to 2017, separated in two lines (violent and not violent). You can choose which line is shown by a checkbox.
 
-    When you click on a bar (year) of the crime chart, underneath of that an aster plot appears which shows the different amounts per category of that year (homicide, assault, theft etc.).
-
-    [plaatje]
+    When you click on a year point of one of the lines in that chart, underneath of that a bar chart appears which shows the different amounts of crimes per sub category of that year. For violent crimes these are for example homicide, assault, kidnapping. For not violent crimes examples of the subcategories are theft, corruption, smuggling etc.
 
   * Extra (if there is time)
-    Besides the crime rates, the prisoner rates are added. When this is done, a second bar chart will be shown next to the crime one. If you click on a bar chart, an aster plot appears with the different categories: Adults, Juveniles, Nationals, Foreigners.
+    Besides the crime rates, the prisoner rates are added. When this is done, a switch button is made which changes the sunburst.
 
 
 ## Prerequisites
@@ -39,9 +36,9 @@ The prerequisites for starting the project consist of the data sources, external
   * d3-tip
 
 ### Similar Visualizations
-  * [Map with linked bar chart](https://vida.io/documents/4vZ9mRGyepoyQxFcK)
-  * [Aster Plot](http://bl.ocks.org/bbest/2de0e25d4840c68f2db1)
-  * [Bar chart with linked pie chart](http://bl.ocks.org/NPashaP/96447623ef4d342ee09b)
+  * [Zoomable Sunburst](https://bl.ocks.org/kerryrodden/477c1bfb081b783f80ad)
+  * [Multiple line chart](http://bl.ocks.org/d3noob/e99a762017060ce81c76)
+  * [Bar chart with](http://bl.ocks.org/d3noob/8952219)
 
 ### Hardest parts
   * combining data in one file
