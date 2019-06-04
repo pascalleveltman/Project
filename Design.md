@@ -36,7 +36,12 @@ Also, there is some data missing. The missing data is left blanc. For the first 
 * d3-tip
 
 ### Diagram with overview
-![Preview](/doc/design.jpg)
+* When you open the page:
+![Preview](/doc/designp1.jpg)
+* When you click on a country:
+![Preview](/doc/designp2.jpg)
+* When you select a year of a category:
+![Preview](/doc/designp3.jpg)
 
 
 <!-- a diagram with an overview of the technical components of your app (visualizations, scraper etc etc)
