@@ -42,8 +42,3 @@ Also, there is some data missing. The missing data is left blanc. For the first 
 ![Preview](/doc/designp2.jpg)
 * When you select a year of a category:
 ![Preview](/doc/designp3.jpg)
-
-
-<!-- a diagram with an overview of the technical components of your app (visualizations, scraper etc etc)
-as well as descriptions of each of the components and what you need to implement these -->
-[plaatje en schema]
