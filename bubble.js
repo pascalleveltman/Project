@@ -9,6 +9,7 @@ window.onload = function () {
   Promise.all(requests).then(function(response) {
 
       legend();
+      legend2();
       slider(response[0]);
       bubble(response[0], "2005", 0);
       line_chart(response[0], "Belgium", 0);
@@ -220,13 +221,13 @@ function legend(){
     .append("g")
         .attr('transform', 'translate(0,0)')
 
-  for (i in [8, 7, 6, 5, 4, 3, 2, 1, 0]){
+  for (i in [0, 1, 2, 3, 4, 5, 6, 7, 8]){
     svg.selectAll("my_bars")
       .data(colors)
         .enter()
       .append("rect")
         .attr("x", function(d){
-          return (i-8) * - 20
+          return i * 20
         })
         .attr("y", function(d){
           return colors.indexOf(d) * 20;
@@ -244,7 +245,7 @@ function legend(){
     .data(regions)
       .enter()
     .append("text")
-      .attr("x", 180)
+      .attr("x", 185)
       .attr("y", function(d){
         return 10 + regions.indexOf(d) * 20;
       })
@@ -260,6 +261,64 @@ function legend(){
       });
 
 }
+
+function legend2(){
+
+    // append the svg object to the body of the page
+    var height = 440
+    var width = 400
+    var svg = d3.select("#legend2")
+    .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+
+    // The scale you use for bubble size
+    var size = d3.scaleSqrt()
+    .domain([0, 8])  // What's in the data, let's say it is percentage
+    .range([1, 80])  // Size in pixel
+
+    // Add legend: circles
+    var valuesToShow = [1, 4, 7]
+    var xCircle = 80
+    var xLabel = 180
+    var yCircle = 150
+
+    svg
+    .selectAll("legend")
+    .data(valuesToShow)
+    .enter()
+    .append("circle")
+      .attr("cx", xCircle)
+      .attr("cy", function(d){ return yCircle - size(d) } )
+      .attr("r", function(d){ return size(d) })
+      .style("fill", "none")
+      .attr("stroke", "black")
+
+    // Add legend: segments
+    svg
+    .selectAll("legend")
+    .data(valuesToShow)
+    .enter()
+    .append("line")
+      .attr('x1', function(d){ return xCircle + size(d) } )
+      .attr('x2', xLabel)
+      .attr('y1', function(d){ return yCircle - size(d) } )
+      .attr('y2', function(d){ return yCircle - size(d) } )
+      .attr('stroke', 'black')
+      .style('stroke-dasharray', ('2,2'))
+
+    // Add legend: labels
+    svg
+    .selectAll("legend")
+    .data(valuesToShow)
+    .enter()
+    .append("text")
+      .attr('x', xLabel)
+      .attr('y', function(d){ return yCircle - size(d) } )
+      .text( function(d){ return d } )
+      .style("font-size", 10)
+      .attr('alignment-baseline', 'middle')
+    }
 
 function line_chart(data_all, country, gone){
 
@@ -288,9 +347,9 @@ function line_chart(data_all, country, gone){
   }
 
   // set sizes and margins of line chart
-  var total_width = 650;
-  var total_height = 500;
-  var margin = {top: 80, right: 100, bottom: 80, left: 100}
+  var total_width = 600;
+  var total_height = 600;
+  var margin = {top: 100, right: 60, bottom: 120, left: 60}
   var width = total_width - margin.left - margin.right;
   var height = total_height - margin.top - margin.bottom;
 
@@ -388,8 +447,23 @@ function line_chart(data_all, country, gone){
     .attr("transform", "translate(" + (total_width/2 - margin.left) + "," + (height + margin.bottom/2) + ")")
     .attr("font-family", "Arial")
     .style("text-anchor", "middle")
-    .attr("font-size", 14)
+    .attr("font-size", 16)
     .text("Years");
+  // text for the x axis
+  svg.append("text")
+    .attr("transform", "translate(" + (total_width/2 - margin.left) + "," + (-60) + ")")
+    .attr("font-family", "Arial")
+    .style("text-anchor", "middle")
+    .attr("font-size", 18)
+    .text("Ecological Footprint and Flights over time");
+  // name the country with is plotted
+  svg.append("text")
+  .attr("transform", "translate(" + (total_width/2 - margin.left) + "," + (- 25) + ")")
+  .attr("font-family", "Arial")
+  .attr("font-weight", "bold")
+  .style("text-anchor", "middle")
+  .attr("font-size", 16)
+  .text(country);
 
   // text for the y axis
   svg.append("text")
@@ -398,16 +472,16 @@ function line_chart(data_all, country, gone){
     .attr("y", - 40)
     .attr("font-family", "Arial")
     .style("text-anchor", "middle")
-    .attr("font-size", 14)
+    .attr("font-size", 16)
     .text("Average flights per habitant");
   // text for the y axis
   svg.append("text")
     .attr("transform", "rotate(90)")
     .attr("x", height/2 )
-    .attr("y", - width - margin.left/2)
+    .attr("y", - width - margin.left/2 - 10)
     .attr("font-family", "Arial")
     .style("text-anchor", "middle")
-    .attr("font-size", 14)
+    .attr("font-size", 16)
     .text("Ecological footprint");
 
   // draw x axis
@@ -433,7 +507,7 @@ function line_chart(data_all, country, gone){
 function scatter_plot(data, gone){
 
   // select plot data
-  var x_var = "EFP";
+  var x_var = "APR";
   var y_var = "APR";
   var year = "2005";
 
@@ -443,16 +517,26 @@ function scatter_plot(data, gone){
     x_var = $('#x-value').val();
     y_var = $('#y-value').val();
     year = $('.slider .parameter-value text').html();
-    console.log(x_var, y_var, year)
   }
 
   // select the right data by its year
   var year_data = data[0][String(year)];
 
+  // Set the new dataset with the right year (make a copy so that it does not delete it in the real dataset)
+  var year_data_complete =  year_data.slice();
+
+  // Delete rows with missing value of health variable
+  for (d in year_data_complete) {
+      if (year_data_complete[d][x_var] == "  " || year_data_complete[d][y_var] == "  "){
+        year_data_complete.splice(d, 1)
+        // delete year_data_complete[i];
+      }
+  };
+
   // set sizes and margins of line chart
-  var total_width = 650;
-  var total_height = 500;
-  var margin = {top: 80, right: 100, bottom: 80, left: 100}
+  var total_width = 600;
+  var total_height = 600;
+  var margin = {top: 100, right: 60, bottom: 120, left: 60}
   var width = total_width - margin.left - margin.right;
   var height = total_height - margin.top - margin.bottom;
 
@@ -467,20 +551,20 @@ function scatter_plot(data, gone){
 
   // set the scale for the x axis and y axis
   var x_scale = d3.scaleLinear()
-      .domain([d3.min(year_data, function(d) {
+      .domain([d3.min(year_data_complete, function(d) {
           return d[x_var];
        }),
-       d3.max(year_data, function(d) {
+       d3.max(year_data_complete, function(d) {
           return d[x_var];
        })])
       .range([0, width])
       .nice();
 
   var y_scale = d3.scaleLinear()
-      .domain([d3.min(year_data, function(d) {
+      .domain([d3.min(year_data_complete, function(d) {
           return d[y_var];
        }),
-       d3.max(year_data, function(d) {
+       d3.max(year_data_complete, function(d) {
           return d[y_var];
        })])
       .range([height, 0])
@@ -509,7 +593,7 @@ function scatter_plot(data, gone){
 
   // add dots
   svg.selectAll(".dot")
-   .data(year_data)
+   .data(year_data_complete)
    .enter()
    .append("circle")
      .attr("cx", function(d) {
@@ -536,7 +620,9 @@ function scatter_plot(data, gone){
        var x_pos = d3.mouse(this)[0] - 15
        var y_pos = d3.mouse(this)[1] - 15
        tooltip.attr("transform", "translate(" + x_pos + "," + y_pos + ")")
+        .attr("display", "inline-block")
        tooltip.select("text").text(d.Country)
+        .attr("background-color", "pink")
      })
      .on("mouseout", function(d, i) {
 
@@ -581,15 +667,30 @@ function scatter_plot(data, gone){
      .attr("transform", "translate(" + (width/2) + "," + (height + margin.bottom/2) + ")")
      .attr("font-family", "Arial")
      .style("text-anchor", "middle")
-     .attr("font-size", 14)
+     .attr("font-size", 16)
      .text(title(x_var));
+   // text for the x axis
+   svg.append("text")
+     .attr("transform", "translate(" + (width/2) + "," + -60 + ")")
+     .attr("font-family", "Arial")
+     .style("text-anchor", "middle")
+     .attr("font-size", 18)
+     .text("Scatter Plot (select variables above)");
+  // title for the selected year
+   svg.append("text")
+     .attr("transform", "translate(" + (width/2) + "," + -25 + ")")
+     .attr("font-family", "Arial")
+     .attr("font-weight", 'bold')
+     .style("text-anchor", "middle")
+     .attr("font-size", 16)
+     .text(year);
    // text for the y axis
    svg.append("text")
      .attr("transform", "rotate(-90)")
      .attr("x", - height/2)
      .attr("y", - 40)
      .attr("font-family", "Arial")
-     .attr("font-size", 14)
+     .attr("font-size", 16)
      .style("text-anchor", "middle")
      .text(title(y_var));
 

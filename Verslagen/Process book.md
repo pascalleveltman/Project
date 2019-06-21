@@ -72,7 +72,7 @@ De datasets worden verzameld en al in een excel bestand gezet om te kijken of ze
 Vormgeving van het nieuwe onderwerp.
 
 ### 10 juni
-Vandaag thuis verder gewerkt aan het nieuwe onderwerp: European Air Transport. Om meer een beeld te krijgen welke figuren ik ga gebruiken en hoe ik het qua data ga aanpakken.
+Vandaag verder gewerkt aan het nieuwe onderwerp: European Air Transport. Ik probeer een beter beeld te krijgen welke figuren ik ga gebruiken en hoe ik het qua data ga aanpakken.
 
 #### Visualisaties
 Er zijn 2 ideeen voor visualtisaties.
@@ -85,7 +85,7 @@ Er zijn 2 ideeen voor visualtisaties.
 Er moeten een aantal landen komen te vervallen omdat deze te incompleet zijn, bijvoorbeeld Croatie. Verder is de dataset van 2005 tot 2017 redelijk compleet en oogt bruikbaar.
 
 ### 11 juni
-Op sciencepark meer feedback en ideeen gekregen over mijn nieuwe idee. Deze werk ik uit en ik begin aan de eerste visualisatie.
+Op sciencepark meer feedback en ideeën gekregen over mijn nieuwe idee. Deze werk ik uit en ik begin aan de eerste visualisatie.
 
 #### Figuren
 Mijn groepje zei in de feedback dat de bubble chart het beste idee was, en dan de ecological footprint mee te nemen. Andere feedback die ik kreeg was een dubbele checkbox voor de scatterplot, zowel op de x als de y as dus. Hiermee kan je zelf kiezen wat je wil laten correleren. Hierdoor ziet mijn visualisatie er als volgt uit:
@@ -108,13 +108,73 @@ De data voor de ecologische footprint is van ![Global Footprint Network](https:/
 voor 2005 wordt er een begin gemaakt aan de bubble chart ter uitprobeersel.
 
 ### 12 juni
+Vandaag vooral gewerkt aan het samenstellen van alle data en het maken van een voorbeeld html pagina.
 
+#### Data
+De data is eerst per categorie voor alle landen verzameld via ec Europe en de Global Footprint Network. De landen vormen hierbij de rijen en de jaren vormen de kolommen. De landen die veel data ontbraken heb ik eruit gehaald. Dit waren Bulgarije, Ierland, Malta, Kroatie, Hongarije en Zweden. Ook is de selectie van jaren beperkt gehouden om de data zo compleet mogelijk te laten. de jaren 2005 tot 2016 blijven hierbij over. In Excel worden de datasets van alle categorien onder elkaar geplaast. De dataset is ready!
 
-####
+#### HTML
+Via bootstrap ben ik op ideeën gebracht voor de pagina waarop mijn visualisaties zichtbaar worden. Het bestaat uit een hoofdpagina waar ik het onderwerp zal toelichten, en een link daarop naar de Data pagina waar mijn figuren zullen staan. Daarvoor maak ik via kolommen vast een basis inrichting.
+
+### 13 juni
+Ik ben voornamelijk verder gegaan met de bubble chart.
+
+#### Figuren
+Als feedback kreeg ik om eerst de bubble chart in een voorbeeld HTML te maken, en pas aan het einde in de uiteindelijke HTML pagina's toe te voegen waaraan ik gister gewerkt heb. Dit zodat ik makkelijker aanpassingen kon maken.
+
+#### Bubble chart
+Ik ga verder met de bubble chart waaraan ik 11 juni was begonnen. Hierbij wordt de ecologische footprint vergeleken met het aantal vluchten per inwoner per jaar. Dit lukt wel aardig.
+
+### 14 juni
+Vandaag lag de focus nog steeds op de bubblechart.
+
+#### Bubble chart
+Deze is nu compleet gemaakt met de juiste grootte voor de waarden. Ook zijn de kleuren op schaal gemaakt (van licht naar donker) en zit er verschil in kleur per deel van europa (noord, oost, zuid, west). Dit is slechts alleen nog voor het jaar 2005 gelukt.
+
+## Week 3
+Uitwerken van alle figuren.
+
+### 17 juni
+Na het weekend werd het tijd om de volledige dataset in te laden, in plaats van alleen het jaar 2005.
+
+#### Data
+Het was even nadenken hoe de data het best ingeladen kon worden. Via een json, dat was al snel duidelijk. Maar welke structuur dan precies? Uiteindelijk heb ik besloten de data als volgt in te richten: {"2005" : [{land1}, {land2} ...], ... , "2016" : [{land1}, {land2} ...]}. Hiervoor heb ik in python een converter geschreven. in land 1 staat de volgende informatie:
+* Country
+* APR (aantal vluchten naar het buitenland binnen Europa per inwoner dat jaar)
+* RPR (aantal treinritten naar het buitenland binnen Europa per inwoner dat jaar)
+* EFP (ecologische voetafdruk dat jaar)
+* EEX (overheidsuitgaven aan het milieu dat jaar)
+
+### 18 juni
+Tijd om de timeslider in elkaar te zetten!
+
+#### Slider
+Dit is gelukt via tutorials op het internet. De transition is nog niet helemaal naar wens. Maar dit bewaar ik voor de volgende week.
+
+#### Legenda
+Verder heb ik vandaag de kleuren legenda in elkaar gezet met mooie overloop. Precieze cijfers moeten alleen nog worden toegevoegd.
+
+### 19 juni
+Vandaag wordt het tweede figuur toegevoegd, de line chart. Volgens tutorials op het internet was het niet een ingewikkeld figuur om in elkaar te zetten en te linken.
+
+#### Line chart
+Op de x as staat het tijdsverloop in jaren en er is een dubbele y as, want er worden twee data verlopen weergegeven. De linker as is de APR en de rechter as is de ecologische footprint. Ze krijgen ook beiden een andere kleur.
+
+#### Linked
+Wanneer je op de bubble van een land klikt (in welk jaartal dan ook) laat de linechart de tijdsverloop van dat jaar zien.
+
+#### 20 juni
+Het laatste figuur, de scatterplot, wordt toegevoegd. Deze is niet nieuw voor me en ik kan de afmetingen van de linechart gebruiken wat erg scheelt. De checkbox wordt wel een uitdaging.
+
+#### Scatter plot 
+
 
 
 12: samenvoegen van alle data, voorbeeld html
 13: begin van de bubble chart van de sample
 14: afmaken van de bubble chart
 17: bubble af met kleuren en regio's
-18: 
+18: data structuur goed, time slider compleet gemaakt
+19: line chart gemaakt
+20: scatterplot gemaakt
+21: site gebouwd
