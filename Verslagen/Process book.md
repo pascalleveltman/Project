@@ -113,6 +113,8 @@ Vandaag vooral gewerkt aan het samenstellen van alle data en het maken van een v
 #### Data
 De data is eerst per categorie voor alle landen verzameld via ec Europe en de Global Footprint Network. De landen vormen hierbij de rijen en de jaren vormen de kolommen. De landen die veel data ontbraken heb ik eruit gehaald. Dit waren Bulgarije, Ierland, Malta, Kroatie, Hongarije en Zweden. Ook is de selectie van jaren beperkt gehouden om de data zo compleet mogelijk te laten. de jaren 2005 tot 2016 blijven hierbij over. In Excel worden de datasets van alle categorien onder elkaar geplaast. De dataset is ready!
 
+![Preview](../Images/data.jpg)
+
 #### HTML
 Via bootstrap ben ik op ideeën gebracht voor de pagina waarop mijn visualisaties zichtbaar worden. Het bestaat uit een hoofdpagina waar ik het onderwerp zal toelichten, en een link daarop naar de Data pagina waar mijn figuren zullen staan. Daarvoor maak ik via kolommen vast een basis inrichting.
 
@@ -130,6 +132,8 @@ Vandaag lag de focus nog steeds op de bubblechart.
 
 #### Bubble chart
 Deze is nu compleet gemaakt met de juiste grootte voor de waarden. Ook zijn de kleuren op schaal gemaakt (van licht naar donker) en zit er verschil in kleur per deel van europa (noord, oost, zuid, west). Dit is slechts alleen nog voor het jaar 2005 gelukt.
+
+![Preview](../Images/bubble.jpg)
 
 ## Week 3
 Uitwerken van alle figuren.
@@ -151,8 +155,12 @@ Tijd om de timeslider in elkaar te zetten!
 #### Slider
 Dit is gelukt via tutorials op het internet. De transition is nog niet helemaal naar wens. Maar dit bewaar ik voor de volgende week.
 
+![Preview](../Images/slider.jpg)
+
 #### Legenda
 Verder heb ik vandaag de kleuren legenda in elkaar gezet met mooie overloop. Precieze cijfers moeten alleen nog worden toegevoegd.
+
+![Preview](../Images/l1.jpg)
 
 ### 19 juni
 Vandaag wordt het tweede figuur toegevoegd, de line chart. Volgens tutorials op het internet was het niet een ingewikkeld figuur om in elkaar te zetten en te linken.
@@ -160,21 +168,63 @@ Vandaag wordt het tweede figuur toegevoegd, de line chart. Volgens tutorials op 
 #### Line chart
 Op de x as staat het tijdsverloop in jaren en er is een dubbele y as, want er worden twee data verlopen weergegeven. De linker as is de APR en de rechter as is de ecologische footprint. Ze krijgen ook beiden een andere kleur.
 
+![Preview](../Images/linechart.jpg)
+
 #### Linked
 Wanneer je op de bubble van een land klikt (in welk jaartal dan ook) laat de linechart de tijdsverloop van dat jaar zien.
 
-#### 20 juni
+### 20 juni
 Het laatste figuur, de scatterplot, wordt toegevoegd. Deze is niet nieuw voor me en ik kan de afmetingen van de linechart gebruiken wat erg scheelt. De checkbox wordt wel een uitdaging.
 
-#### Scatter plot 
+#### Scatter plot
+De eerste punten waren snel gezet, maar er moeten veel variabelen gewijzigd kunnen worden, namelijk de x as, de y as en het jaartal. Via internet vond ik al snel een checkbox die ik in mijn html zette. Sommige data was incompleet bij de train rides, dat is wel erg storend. Door middel van een for loop worden de incomplete datapoints eruit verwijderd. Ook moet de titel telkens worden aangepast bij nieuwe updates.
 
+![Preview](../Images/scatter.jpg)
+![Preview](../Images/checkbox.jpg)
 
+### 21 juni
+Vandaag heb ik alle figuren uit de voorbeeld html gehaald en in de echte html gezet.
 
-12: samenvoegen van alle data, voorbeeld html
-13: begin van de bubble chart van de sample
-14: afmaken van de bubble chart
-17: bubble af met kleuren en regio's
-18: data structuur goed, time slider compleet gemaakt
-19: line chart gemaakt
-20: scatterplot gemaakt
-21: site gebouwd
+#### Data HTML
+Deze indeling was net iets anders dan gewend, hoe ging ik het neerzetten? Het meest struggelde ik met de checkbox. Deze verdween zo uit het zicht als hij onder de scatterplot kwam, dat ik hem maar in de container van de bubble chart heb gezet, rechts onderin. de rest van de indeling sprak erg voor zich, alleen de marges moesten erg gewijzigd worden en het plaatsen van de titels was lastig.
+
+## Week 4
+Deadlines:
+* Woensdag: Code, License, Read me, Style guide, Process book
+* Donderdag: Filmpje, Report
+* Vrijdag: Presentaties
+
+### 24 juni
+De basis staat er, maar de transitions en tooltips moeten nog netjes worden toegevoegd.
+
+#### Transitions
+Tot nu toe werd bij het updaten telkens remove gebruikt, maar nu ga ik die omzetten naar nette en soepele transities.Te beginnen met de bubbel transition, zodat je de bubbels in hun verandering kunt volgen. De opzet van de code ging prima, maar uiteindelijk heb ik lang gezeten om de cx en cy uit de simulatie goed te krijgen. Dit was die dag niet gelukt, ondanks alle hulp. Ik twijfelde telkens erg om 2 verschillende functies te maken (bubble en bubble update bijvoorbeeld) of door middel van een dummy variabele te updaten. Ik koos voor het laatste, om niet opnieuw te hoeven verwijzen. Omdat de bubble transition niet werkte ben ik maar begonnen met de lijn transition.
+
+#### Tooltip
+Deze is eindelijk gelukt, nadat hij een tijdje achter het svg verscholen zat. Alleen de waarden moeten nog worden toegevoegd. Het lukt me niet om dit met een regel ertussen te krijgen helaas, dus laat ik het voor nu op alleen de naam van het land.
+
+### 25 juni
+Vandaag worden de transitions afgemaakt en de titels en legenda's goed gemaakt.
+
+#### Transitions
+Deze bleken niet goed gegaan omdat de variabelen niet in beide if statements gedefinieerd waren. De code is ietswat chaotisch door de overlap of missende overlap. Door een frisse blik was de fout gelukkig goed gevonden. De andere transitions van de line chart en scatter plot zijn wel gemaakt door middel van een aparte update functie, om de vorige fout te voorkomen en deze waren vrij snel gelukt. De bubble update liet ik voor wat het is.
+Later kwam ik erachter dat elke eerste keer als een jaar op de slider geselecteerd werd, dat de bubbles van linksboven komen inspringen in plaats van 'verspringen'. Dat kregen we niet te voorkomen. Na overleg met Jasper heb ik besloten om voor de bubble chart zichtbaar te maken, alle jaren een keer aan te roepen zodat je dat niet ziet.
+
+#### Titels en Legenda's
+De Site en visualisatie wordt duidelijk gemaakt door goede titels en legenda's. Om niet telkens 'buitenlandse vluchten binnen Europa' te hoeven noemen, worden de variabelen omschreven op de home page en minder lang genoemd op de data page.
+
+![Preview](../Images/l2.jpg)
+
+### 26 juni
+Dag van de deadline, site netjes maken dus, en stylesheet en process book in orde brengen.
+
+#### Tooltip
+Door feedback van mijn groepje kwam ik erachter hoe ik het beste de tooltip toe kon voegen, namelijk door foreign object en html.
+
+![Preview](../Images/tooltip.jpg)
+
+#### HTML
+Op de home html komt een uitleg en afbeeldingen van de vraagstelling van het project, de data en variabelen. Daarnaast is een link naar de visualisatie, anders is er te veel informatie voor op een enkele pagina.
+
+#### Code
+De code wordt snel netjes gemaakt volgens de style sheets en de files worden in verschillende mapjes gestopt waardoor de paden anders moeten.

@@ -8,6 +8,24 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+  .jumbotron {
+    padding-bottom: 40px;
+    padding-top: 70px;
+    color:black;
+    /* background-color: #fee0d2; */
+    /* background-color:lavenderblush; */
+    background: url("../Images/sky2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+  }
+
+  #expl{
+    padding-top: 20px;
+  }
+
+  </style>
 </head>
 
 <body>
@@ -21,31 +39,58 @@
           <a class="nav-link" href="Home.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Data1.html">Data</a>
+          <a class="nav-link" href="Data.html">Data</a>
         </li>
       </ul>
     </nav>
 
     <!-- Welcome text and title -->
-    <div class="jumbotron text-center" style="background-color:lavenderblush;">
-      <h1>Crime in Europe</h1>
-      <p>Different kinds of crime committed per country</p>
+    <div class="jumbotron text-center" style="background-color: #fee0d2;">
+      <h1>Air Transport in Europe</h1>
+      <p></p>
+      <h5>Is there any correlation between environmental performance and air transport?</h5>
     </div>
 
     <!-- Text spaces -->
     <div class="container">
       <div class="row">
-        <div class="col-sm-4" style="background-color:lavenderblush;">
-          <h3>Introduction</h3>
-          <p>...</p>
+        <div id = "expl" class="col-sm-8" style="background-color: 	#E7F4F5;">
+          <h2>Introduction</h2>
+          <p>Air transportation is a vital enabler of growth in the economy and quality of life through empowering trade and tourism on a global scale. However, its undesirable environmental impacts have become increasingly important. Air transportation impacts people at the local level near airports (mainly through noise and air pollution), regional level (mainly through air pollution), and at a global scale (through climate change and air pollution).</p>
+          <h5>Government Expenditures</h5>
+          <p>In Europe, there is a growing awareness of environmental issues and the consequences of global warming among the people. Sustainability is getting more important and influences perosnal life styles as well as big decisions of the government. For example, each year a part of the government budget is reserved to improve the environment of the country. If this percentage is hight, it would mean that in general, the country is aware of serious environmental problems and is prepared to sacrifice money in order to counteract that.</p>
+          <h5>Ecological Footprint</h5>
+          <p>One way to indicate the environmental performence of a country is by calculating its so called 'Ecological Footprint'. This score counts how many planets we would need if everyone on earth would live like the average habitant of that country. If this score is high, it means a country is nog sustainable based on its supply and demand of nature and its pollution. The lower the score, the less unsustainable a country is.</p>
+          <h5>Train transport</h5>
+          <p>A way more sustainable option to travel is by train. European railways make it possible and easy to take trains to international destinations. So why still go by plane?</p>
+          <p>The main question in this project is: What is the development of international air transport inside Europe for the past decade, knowing it is bad for the environment and train is a more sustainable and eady alternative? </p>
         </div>
-        <div class="col-sm-4">
-          <h3>Column 1</h3>
-          <p>...</p>
-        </div>
-        <div class="col-sm-4" style="background-color:lavenderblush;">
-          <h3>Column 2</h3>
-          <p>...</p>
+        <div id = "expl" class="col-sm-4">
+          <h3>Data</h3>
+          <p>The data in this project is yearly and per country.</p>
+          <p>
+            Ecological Footprint:
+            <a href="https://www.footprintnetwork.org/resources/data/">Global Footprint Network</a>
+          </p>
+          <p>
+            Air and Train Transport:
+            <a href="https://ec.europa.eu/eurostat/data/database?p_p_id=NavTreeportletprod_WAR_NavTreeportletprod_INSTANCE_nPqeVbPXRmWQ&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_pos=1&p_p_col_count=2">ec Europe</a>
+          </p>
+          <p>
+            Government Expenditure:
+            <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Air_transport_statistics">ec Europe</a>
+          </p>
+          <img src="../Images/plane.jpg" style="width:350px;height:220px;">
+          <p></p>
+          <h3>Variables</h3>
+          <p>The variables which are used in this project are described as follows:
+            <ul>
+              <li><b>Flights</b> - average amount of international flights to European countries per habitant.</li>
+              <li><b>Ecological Footprint</b> - amount of planets needed if the whole world would have the lifestyle of an average habitant.</li>
+              <li><b>Train rides</b> - average amount of international train rides to European countries per habitant.</li>
+              <li><b>Government Environmental Expenditures</b> - percentage of the total government expenditures in order to improve the environmental peformence of the country.</li>
+            </ul>
+           </p>
         </div>
       </div>
     </div>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/d3-simple-slider"></script>
+  <script type="text/javascript" src="d3/d3.js"></script>
+  <script src="../Javascript/linechart.js"></script>
+  <script src="../Javascript/scatterplot.js"></script>
+  <script src="../Javascript/bubble.js"></script>
+  <script src="../Javascript/slider.js"></script>
+  <style>
+
+  .tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: black;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+
+  .jumbotron {
+    padding-bottom: 0;
+    padding-top: 70px;
+    color:black;
+    /* background-color: #fee0d2; */
+    /* background-color:lavenderblush; */
+    background: url("../Images/sky2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+  }
+
+  .bubbleleft{
+    padding-top: 20px;
+    background-color: #fee0d2;
+  }
+
+  #x-value{
+    width:200px;
+  }
+
+  #y-value{
+    height: 25px;
+    width:200px;
+  }
+
+  #menu{
+    font-size: 1;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+
+    bottom: 100px;
+  }
+
+  #yselect{
+    width: 10;
+    height: 10;
+  }
+
+  #expl{
+    padding-top: 20px;
+  }
+
+  .titlechart{
+    padding-top: 20px;
+    padding-bottom: 0px;
+    bottom: 0;
+    text-align: center;
+  }
+
+  .navbar-itemr{
+    float: right;
+  }
+
+  </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation bar top -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <ul class="navbar-nav">
+        <li class="navbar-item">
+          <a class="nav-link disabled" href="#">Pascalle Veltman</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Data.html">Data</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Welcome text and title -->
+    <div class="jumbotron">
+      <h1>Visualization</h1>
+      <div id = "slider"></div>
+    </div>
+
+    <!-- Make figures -->
+    <div class="container">
+
+        <!-- The bubble chart and its legends -->
+        <div class="row">
+          <div id = "expl" class="col-sm-2" style="background-color: 	#E7F4F5;">
+            <h3>Bubble Chart</h3>
+            <p>This bubble chart shows the intensity of the air transport and the ecological footprint of european countries. The year is selected by the time slider above.</p>
+            <p>Each bubble represents one country. The size corresponds to the average amount of flights per habitant that year. The color shows the ecological footprint of the country as well as the region (North, East, South or West Europe).</p>
+            <p>Click on a bubble to see the line chart of that country below!</p>
+          </div>
+            <div id = "chart" class="col-sm-7">
+            </div>
+            <div class="col-sm-3">
+              <h1 id = "legend"></h1>
+              <h1 id = "legend2"></h1>
+              <div id = "menu">
+                <p id = "yselect"><span><label for="y-axis", style = "font-family: Arial;font-size: 14">Select y-axis:</label></span>
+                    <select id="y-value">
+                        <option value="APR">Flights</option>
+                        <option value="EFP">Ecological Footprint</option>
+                        <option value="RPR">Train Rides</option>
+                        <option value="EEX">Government Environmental Expenditure</option>
+                    </select>
+                <!-- <p id = "xselect" > -->
+                  <span><label for="x-axis", style = "font-family: Arial; font-size: 14">Select x-axis:</label></span>
+                    <select id="x-value">
+                        <option value="APR">Flights</option>
+                        <option value="EFP">Ecological Footprint</option>
+                        <option value="RPR">Train Rides</option>
+                        <option value="EEX">Government Environmental Expenditure</option>
+                    </select>
+                <p><button id="buttonclick">submit</button>
+              </div>
+            </div>
+        </div>
+
+        <!-- The line and scatter plots -->
+        <div class="row">
+          <div id = "linechart" class="col-sm-5">
+          </div>
+          <div class="col-sm-2">
+          </div>
+            <div id = "scatterplot" class="col-sm-5">
+            </div>
+          </div>
+        <div class="row">
+          <div id = "expl" class="col-sm-5" style="background-color: 	#E7F4F5;">
+            <h3>Line Chart</h3>
+            <p>This line chart demonstrates the development of the air transport and the ecological footprint of the selected country (by bubble chart or scatter plot) over time. The data is available from the year 2005 until the year 2016.</p>
+            <p>The left y-axis shows the values of the average amount of flights per habitant. The right y-axis shows the value of the ecological footprint.</p>
+          </div>
+          <div class="col-sm-2">
+          </div>
+            <div id = "expl" class="col-sm-5" style="background-color: 	#E7F4F5;">
+              <h3>Scatter Plot</h3>
+              <p>This scatter plot allows you to observe the correlation between the values selected above the plot of the year selected in de time slider.</p>
+              <p>The options for the values are: average amount of flights per habitant, ecological footprint, average amount of train rides (to another European country) per habitant or environmental expenditures by the government (in % of total expenditures).</p>
+            </div>
+          </div>
+    </div>
+
+</body>
+</html>
