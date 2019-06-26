@@ -1,4 +1,4 @@
-function scatter_plot(data, gone){
+function scatter_plot(data){
 
   // select plot data
   var x_var = "APR";
@@ -8,10 +8,10 @@ function scatter_plot(data, gone){
   // select the right data by its year
   var year_data = data[0][String(year)];
 
-  // Set the new dataset with the right year (make a copy so that it does not delete it in the real dataset)
+  // set the new dataset with the right year (make a copy so that it does not delete it in the real dataset)
   var year_data_complete =  year_data.slice();
 
-  // Delete rows with missing value of health variable
+  // delete rows with missing value of health variable
   for (d in year_data_complete) {
       if (year_data_complete[d][x_var] == "  " || year_data_complete[d][y_var] == "  "){
         year_data_complete.splice(d, 1);
@@ -34,7 +34,7 @@ function scatter_plot(data, gone){
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // set the scale for the x axis and y axis
+  // set the scale for the x axis
   var x_scale = d3.scaleLinear()
     .domain([d3.min(year_data_complete, function(d) {
         return d[x_var];
@@ -57,7 +57,6 @@ function scatter_plot(data, gone){
 
   // set color of north, east, south or west european country
   function set_color(region, mouse){
-
     color_index = 4
     if (mouse == 1){
       color_index = color_index + 2;
@@ -75,9 +74,9 @@ function scatter_plot(data, gone){
     else if (region == "W"){
       return d3.schemeGreens[9][color_index];
     }
-
   }
 
+  // make text for inside the tooltip
   function tooltip_text(afk){
     if (afk == "APR"){
      return "Flights";
@@ -109,36 +108,35 @@ function scatter_plot(data, gone){
        return set_color(d["REG"], 0)
      })
    .on("mouseover", function(d, i) {
-
      tooltip.style("display", null);
-
      d3.select(this)
        .attr("stroke", function(d){
          return set_color(d["REG"], 1)
        })
-        .attr("stroke-width", 2 )
-        .attr("r", 6)})
+       .attr("stroke-width", 2 )
+       .attr("r", 6);
+     })
    .on("mousemove", function(d){
      var x_pos = d3.mouse(this)[0] + 20;
      var y_pos = d3.mouse(this)[1] ;
-     var html = ("<span> " + d.Country + "<br> " + tooltip_text(x_var) + ": " +  parseFloat(d[x_var]).toFixed(2)+ "<br> " + tooltip_text(y_var) +": " + parseFloat(d[y_var]).toFixed(2) + "</span>")
+     var html = ("<span> " + d.Country + "<br> " + tooltip_text(x_var) + ": " +  parseFloat(d[x_var]).toFixed(2)+ "<br> " + tooltip_text(y_var) +": " + parseFloat(d[y_var]).toFixed(2) + "</span>");
      tooltip.attr("transform", "translate(" + x_pos + "," + y_pos + ")");
      tooltip.html(html)
       .style("background-color", "#E7F4F5");
    })
    .on("mouseout", function(d, i) {
      tooltip.style("display", "none");
-     d3.select(this).attr("stroke", "none")
-        .attr("r", 5)
+     d3.select(this)
+        .attr("stroke", "none")
+        .attr("r", 5);
       })
     .on("click", function(d) {
-      line_chart_update(data, d.Country, 1);
+      line_chart_update(data, d.Country, 1)
     });
 
   // draw x axis
   var x_axis = d3.axisBottom(x_scale)
     .ticks(10);
-
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .attr("class", "x_scat")
@@ -147,11 +145,11 @@ function scatter_plot(data, gone){
   // draw y axis
   var y_axis = d3.axisLeft(y_scale)
     .ticks(5);
-
   svg.append("g")
     .attr("class", "y_scat")
     .call(y_axis)
 
+  // make title for axis
   function title(afk){
     if (afk == "APR"){
      return "Flights (per habitant)";
@@ -208,11 +206,11 @@ function scatter_plot(data, gone){
   // add a tooltip
   var tooltip = d3.select("#scatter_plot").append("foreignObject")
     .attr("width", 150)
-    .attr("height", 80)
+    .attr("height", 80);
 
 }
 
-function scatter_plot_update(data, gone){
+function scatter_plot_update(data){
 
   x_var = $('#x-value').val();
   y_var = $('#y-value').val();
@@ -226,7 +224,7 @@ function scatter_plot_update(data, gone){
 
   // Delete rows with missing value of health variable
   for (d in year_data_complete) {
-      if (year_data_complete[d][x_var] == "  " || year_data_complete[d][y_var] == "  "){
+      if (year_data_complete[d][x_var] == "  " || year_data_complete[d][y_var] == "  " || year_data_complete[d][y_var] == "NaN"){
         year_data_complete.splice(d, 1);
       }
   };
@@ -238,7 +236,7 @@ function scatter_plot_update(data, gone){
   var width = total_width - margin.left - margin.right;
   var height = total_height - margin.top - margin.bottom;
 
-  // set the scale for the x axis and y axis
+  // set the scale for the x axis
   var x_scale = d3.scaleLinear()
     .domain([d3.min(year_data_complete, function(d) {
         return d[x_var];
@@ -249,6 +247,7 @@ function scatter_plot_update(data, gone){
     .range([0, width])
     .nice();
 
+  // set the scale for the y axis
   var y_scale = d3.scaleLinear()
     .domain([d3.min(year_data_complete, function(d) {
         return d[y_var];
@@ -259,6 +258,7 @@ function scatter_plot_update(data, gone){
     .range([height, 0])
     .nice();
 
+  // select the svg
   var svg = d3.select("#scatter_plot");
 
   // draw x axis
@@ -277,6 +277,7 @@ function scatter_plot_update(data, gone){
       .duration(1000)
       .call(y_axis);
 
+  // select text for tooltip
   function tooltip_text(afk){
     if (afk == "APR"){
      return "Flights";
@@ -292,6 +293,28 @@ function scatter_plot_update(data, gone){
     }
   }
 
+  // set color of north, east, south or west european country
+  function set_color(region, mouse){
+    color_index = 4
+    if (mouse == 1){
+      color_index = color_index + 2;
+    }
+
+    if (region == "N"){
+      return d3.schemeBlues[9][color_index];
+    }
+    else if (region == "E"){
+      return d3.schemePurples[9][color_index];
+    }
+    else if (region == "S"){
+      return d3.schemeReds[9][color_index];
+    }
+    else if (region == "W"){
+      return d3.schemeGreens[9][color_index];
+    }
+  }
+
+  // update the dots
   svg.selectAll("circle")
     .data(year_data_complete)
     .transition()
@@ -301,18 +324,18 @@ function scatter_plot_update(data, gone){
     })
     .attr("cy", function(d) {
       return y_scale(d[y_var])
-    })
+    });
 
+  // add tooltip to dots
   svg.selectAll("circle")
   .on("mouseover", function(d, i) {
     tooltip.style("display", null);
-
     d3.select(this)
       .attr("stroke", function(d){
-        return set_color(d["REG"], 1)
+        return set_color(d["REG"], 1);
       })
-       .attr("stroke-width", 2 )
-       .attr("r", 6)})
+      .attr("stroke-width", 2 )
+      .attr("r", 6)})
     .on("mousemove", function(d){
       var x_pos = d3.mouse(this)[0] + 20;
       var y_pos = d3.mouse(this)[1] ;
@@ -325,8 +348,9 @@ function scatter_plot_update(data, gone){
       tooltip.style("display", "none");
       d3.select(this).attr("stroke", "none")
          .attr("r", 5)
-     })
+     });
 
+  // add titles to axis
   function title(afk){
     if (afk == "APR"){
      return "Flights (per habitant)";
@@ -350,6 +374,6 @@ function scatter_plot_update(data, gone){
   // add a tooltip
   var tooltip = d3.select("#scatter_plot").append("foreignObject")
     .attr("width", 150)
-    .attr("height", 80)
+    .attr("height", 80);
 
 }

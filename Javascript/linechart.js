@@ -1,22 +1,11 @@
-function line_chart1(data_all, country, gone){
-
-  // check if there is a chart that has to be removed
-  // if (gone == 1){
-  //   d3.select("#line_chart").remove();
-  // }
+function line_chart(data_all, country){
 
   // select data and make empty lists
   var data = data_all[0];
-  var years_list = [];
   var APR_list = [];
   var EFP_list = [];
 
-  // fill lists with right country data to use
-  for (var i = 2005; i <= 2016; i++) {
-       years_list.push(String(i));
-  }
-  console.log(years_list)
-
+  // save plot values to lists
   for (var i = 2005; i <= 2016; i++) {
     for (var j = 0; j < data[String(i)].length; j++) {
       if (data[String(i)][j]["Country"] == country) {
@@ -42,18 +31,19 @@ function line_chart1(data_all, country, gone){
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // set the APR scale for the axis
+  // set the scale for the x axis
   var x_sc_APR = d3.scaleLinear()
     .domain(["2005", "2016"])
     .range([0, width])
     .nice();
 
+  // set the scale for the left y axis
   var y_sc_APR = d3.scaleLinear()
     .domain([Math.min(...APR_list) - 0.5, Math.max(...APR_list)])
     .range([height, 0])
     .nice();
 
-  // set the EFP scale for the axis
+  // set the EFP scale for the right y axis
   var y_sc_EFP = d3.scaleLinear()
     .domain([Math.min(...EFP_list) - 3, Math.max(...EFP_list)])
     .range([height, 0])
@@ -179,7 +169,6 @@ function line_chart1(data_all, country, gone){
   var x_axis = d3.axisBottom(x_sc_APR)
     .tickFormat(d3.format("d"))
     .ticks(10);
-
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .attr("class", "line_x")
@@ -187,7 +176,6 @@ function line_chart1(data_all, country, gone){
 
   // draw left APR axis
   var y_axis_l = d3.axisLeft(y_sc_APR)
-
   svg.append("g")
     .call(y_axis_l)
     .attr("class", "line_y_l")
@@ -195,7 +183,6 @@ function line_chart1(data_all, country, gone){
 
   // draw right EFP axis
   var y_axis_r = d3.axisRight(y_sc_EFP)
-
   svg.append("g")
     .attr("transform", "translate(" + width + ",0)")
     .attr("class", "line_y_r")
@@ -204,19 +191,14 @@ function line_chart1(data_all, country, gone){
 
 }
 
-function line_chart_update(data_all, country, gone){
+function line_chart_update(data_all, country){
 
   // select data and make empty lists
   var data = data_all[0];
-  var years_list = [];
   var APR_list = [];
   var EFP_list = [];
 
-  // fill lists with right country data to use
-  for (var i = 2005; i <= 2016; i++) {
-       years_list.push(String(i));
-  }
-
+  // save values of plot data to lists
   for (var i = 2005; i <= 2016; i++) {
     for (var j = 0; j < data[String(i)].length; j++) {
       if (data[String(i)][j]["Country"] == country) {
@@ -236,7 +218,7 @@ function line_chart_update(data_all, country, gone){
   // add the svg element
   var svg = d3.select("#line_chart");
 
-  // // set the APR scale for the axis
+  // et the scale for the x axis
   var x_sc_APR = d3.scaleLinear()
     .domain([2005, 2016])
     .range([0, width])
@@ -286,11 +268,11 @@ function line_chart_update(data_all, country, gone){
     })
     .curve(d3.curveMonotoneX);
 
+  // select svg elements
   var up_APR = svg.select(".APR_line")
     .datum(APR_list);
   var up_APR_d = svg.selectAll(".APR_dot")
     .data(APR_list)
-
   var up_EFP = svg.selectAll(".EFP_line")
     .datum(EFP_list)
   var up_EFP_d = svg.selectAll(".EFP_dot")
@@ -312,14 +294,11 @@ function line_chart_update(data_all, country, gone){
     .duration(1000)
     .attr("class", "APR_dot")
     .attr("cx", function(d, i) {
-      console.log(x_sc_APR(2005 + i))
       return x_sc_APR(2005 + i)
     })
     .attr("cy", function(d) {
-      console.log(y_sc_APR(parseFloat(d)))
       return y_sc_APR(parseFloat(d))
     })
-
 
   // draw the EFP line
   up_EFP
@@ -337,17 +316,13 @@ function line_chart_update(data_all, country, gone){
     .duration(1000)
     .attr("class", "EFP_dot")
     .attr("cx", function(d, i) {
-      console.log(x_sc_APR(2005 + i))
-      return x_sc_APR(2005 + i)
+      return x_sc_APR(2005 + i);
     })
     .attr("cy", function(d) {
-      console.log(y_sc_EFP(parseFloat(d)))
-      return y_sc_EFP(parseFloat(d))
-    })
+      return y_sc_EFP(parseFloat(d));
+    });
 
   // title with the name of the country with is plotted
   svg.select(".line_country").text(country);
-
-
 
 }

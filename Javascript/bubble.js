@@ -18,15 +18,15 @@ window.onload = function () {
     legend2();
 
     // make the line chart with the start values
-    line_chart1(response[0], "Belgium", 0);
+    line_chart(response[0], "Belgium");
 
     // make the scatter plot with the start values
-    scatter_plot(response[0], 0);
+    scatter_plot(response[0]);
 
     // define what to do when the button is clicked
     d3.select("button")
       .on("click", function(d){
-        scatter_plot_update(response[0], 1)
+        scatter_plot_update(response[0])
       });
 
   });
@@ -36,7 +36,7 @@ window.onload = function () {
 function bubble(data, year, gone){
 
   // select the right data by its year
-  year_data = data[0][String(year)]
+  year_data = data[0][String(year)];
 
   // set the size of the bubbles
   var radius_scale = d3.scaleSqrt().domain(
@@ -80,7 +80,7 @@ function bubble(data, year, gone){
     return color_bubble;
   }
 
-  // check if there is a chart that has to be removed
+  // check if the bubble is not made yet
   if (gone == 0){
 
     // set the diameter of the chart
@@ -144,12 +144,14 @@ function bubble(data, year, gone){
           })
       })
       .on("click", function(d) {
-        line_chart_update(data, d.Country, 1);
+        line_chart_update(data, d.Country);
       });
 
+    // call simulation function
     simulation.nodes(year_data)
       .on('tick', ticked);
 
+    // find x and y while simulation
     function ticked() {
       circles
         .attr("cx", function(d){
@@ -160,10 +162,10 @@ function bubble(data, year, gone){
         })
     }
 
-    // add a tooltip
+    // add a tooltip and place it in good position
     var tooltip = svg.append("foreignObject")
-    .attr("width", 150)
-    .attr("height", 80)
+      .attr("width", 150)
+      .attr("height", 80);
 
     // title for the plot
     svg.append("text")
@@ -175,6 +177,7 @@ function bubble(data, year, gone){
 
   }
 
+  // if bubble is allready placed, update it
   else if (gone == 1){
 
     // set the diameter of the chart
@@ -185,7 +188,6 @@ function bubble(data, year, gone){
       .force("x", d3.forceX(diameter / 2).strength(0.05))
       .force("y", d3.forceY(diameter / 2).strength(0.05))
       .force("collide", d3.forceCollide(function(d){
-        console.log("still moving!")
         return radius_scale(d.APR) + 2;
       }));
 
@@ -193,46 +195,48 @@ function bubble(data, year, gone){
     circle = d3.selectAll(".bubblepoint").data(year_data);
 
     // transition the bubbles
-    circle.transition().duration(500)
+    circle.transition()
+      .duration(500)
         .attr("r", function(d){
-          return radius_scale(d.APR)
+          return radius_scale(d.APR);
         })
         .attr("fill", function(d){
-          return set_color(d.EFP, d.REG, 0)
-        })
-
-    circle
-        .on("mouseover", function(d, i) {
-          tooltip.style("display", null);
-          d3.select(this)
-            .attr("stroke", function(d){
-              return set_color(d.EFP, d.REG, 1);
-            })
-            .attr("stroke-width", 2 )
-            .attr("r", function(d){
-              return radius_scale(d.APR);
-            })
-        })
-        .on("mousemove", function(d){
-          var x_pos = d3.mouse(this)[0] + 10;
-          var y_pos = d3.mouse(this)[1] - 80;
-          var html = ("<span> " + d.Country + "<br> Flights: " +  d.APR + "<br> Footprint: " + d.EFP + "</span>")
-          tooltip.attr("transform", "translate(" + x_pos + "," + y_pos + ")");
-          tooltip.html(html)
-            .style("background-color", "#E7F4F5");
-          })
-        .on("mouseout", function(d, i) {
-          tooltip.style("display", "none");
-          d3.select(this).attr("stroke", "none")
-            .attr("r", function(d){
-              return radius_scale(d.APR);
-            })
-        })
-        .on("click", function(d) {
-          line_chart_update(data, d.Country, 1);
+          return set_color(d.EFP, d.REG, 0);
         });
 
-    // add a tooltip
+    // add tooltip with new variables
+    circle
+      .on("mouseover", function(d, i) {
+        tooltip.style("display", null);
+        d3.select(this)
+          .attr("stroke", function(d){
+            return set_color(d.EFP, d.REG, 1);
+          })
+          .attr("stroke-width", 2 )
+          .attr("r", function(d){
+            return radius_scale(d.APR);
+          })
+      })
+      .on("mousemove", function(d){
+        var x_pos = d3.mouse(this)[0] + 10;
+        var y_pos = d3.mouse(this)[1] - 80;
+        var html = ("<span> " + d.Country + "<br> Flights: " +  d.APR + "<br> Footprint: " + d.EFP + "</span>");
+        tooltip.attr("transform", "translate(" + x_pos + "," + y_pos + ")");
+        tooltip.html(html)
+          .style("background-color", "#E7F4F5");
+        })
+      .on("mouseout", function(d, i) {
+        tooltip.style("display", "none");
+        d3.select(this).attr("stroke", "none")
+          .attr("r", function(d){
+            return radius_scale(d.APR);
+          })
+      })
+      .on("click", function(d) {
+        line_chart_update(data, d.Country);
+      });
+
+    // make a tooltip and place it
     var tooltip = d3.select("#bubble_chart").append("foreignObject")
       .attr("width", 150)
       .attr("height", 80)
@@ -321,9 +325,10 @@ function legend1(){
       .attr("x", function(d){
         return i * 60 - 2;
       })
-      .attr("font-size", 10)
+      .attr("font-size", 10);
   }
 
+  // give title to legend
   svg.append("text")
     .attr("x", 0)
     .attr("y", -20)
@@ -372,6 +377,7 @@ function legend2(){
   var x_label = 200;
   var y_circle = 200;
 
+  // make title for the legend
   svg.append("text")
     .attr("x", 10)
     .attr("y", 20)

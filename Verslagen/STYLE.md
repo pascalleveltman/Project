@@ -9,12 +9,12 @@
 * Starts with lower case, no dots in the end
 
 ### Variables
-* Starts with lower charset
+* Starts with lower case
 * Has _ if consists of multiple parts
-* always defined one by one (every time a new var)
+* Always defined one by one (every time a new var)
 
 ### Clear lines
 * Only above comment
 
 ### Tabs
-* Always single tab if in function 
+* Always single tab if in function

@@ -9,7 +9,7 @@ In this project, the answer to the questions in this problem can be shown by int
 
 ### Plan
 
-![Preview](/doc/plan.jpg)
+![Preview](/Images/plan.jpg)
 
 * Primarily, a zoomable sunburst graph is shown. This sunburn shows crime rate of the year selected by a slide from 2000 until 2017 of North, West, East or South Europe in the first ring. The second selects the precise country. The third ring specifies which part of that average crime rate is violent, and which is not violent. Because there are many different countries, the choice is made to only use three rings (and exclude the subcategories of violent and not violent crimes) in order to keep a clear view.
 
