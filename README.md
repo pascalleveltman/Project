@@ -6,7 +6,7 @@
 https://github.com/pascalleveltman/Project
 
 ## Video
-Watch my demonstration video on this link: https://www.youtube.com/watch?v=8GwPG0Bo7qc&feature=youtu.be
+Watch my demonstration video on this link: https://youtu.be/LAjXHMCB_uc
 
 ## Pages
 * Home
@@ -18,7 +18,7 @@ This page contains the visualization of the data.
 ![Preview](/Images/datab.jpg)
 ![Preview](/Images/datal.jpg)
 
-## Puropose
+## Purpose
 Let the user investigate if there is a possible influence of the environmental awareness on the intensity of air transportation in European countries.
 
 ## Sources of External Codes

@@ -3,7 +3,7 @@ Air Transport in Europe by Pascalle Veltman (11025646).
 
 ## Project Descirption
 This website investigates the relationship between air (and train) transport and environmental performance of European countries. The bubble chart shows the Ecological Footprint and the Air Transport (international and inside Europe) per country in the year selected by the time slider. The scatterplot shows the correlation between the variables chosen in the checkbox of that same year. The variables are: Ecological Footprint, Flights, Train Rides and Environmental Expenditures by the Government. The line chart shows the development of the Footprint and Air transport over time of the country selected in the bubble chart or scatterplot.
-![Preview](/Images/designp1.jpg)
+![Preview](/Images/report.jpg)
 
 ## Technical Design
 This Project consists of a website with two html pages. On the second page, the data is visualized. Every visualization has its own javscript file which is linked to the html page and the other javascript files. The d3 and d3-tip components are used.
