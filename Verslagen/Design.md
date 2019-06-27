@@ -37,8 +37,8 @@ Also, there is some data missing. The missing data is left blanc. For the first 
 
 ### Diagram with overview
 * When you open the page:
-![Preview](/doc/designp1.jpg)
+![Preview](/Images/designp1.jpg)
 * When you click on a country:
-![Preview](/doc/designp2.jpg)
+![Preview](/Images/designp2.jpg)
 * When you select a year of a category:
-![Preview](/doc/designp3.jpg)
+![Preview](/Images/designp3.jpg)
