@@ -1,7 +1,7 @@
 # Process Book
 
 ## Voor Week 1
-Via United Nations Office on Drugs and Crime kwam ik op een duidelijke dataset over misdaad en drugs. Hierin staat veel wereldwijde data over het aantal misdaden (en verschillende soorten daarvan), vervolgingen en gevangenen per jaar per land in count en in rate (niet per se duidelijk wat deze rate inhoud). Al snel was ik er over uit dat ik wereldwijde misdaad rate interessant vond en dat dit een fijne dataset is die ik wil gebruiken. Ik kies voor het tijdsinterval 2000-2017.
+Via United Nations Office on Drugs and Crime kwam ik op een duidelijke dataset over misdaad en drugs. Hierin staat veel wereldwijde data over het aantal misdaden (en verschillende soorten daarvan), vervolgingen en gevangenen per jaar per land in count en in rate (niet per se duidelijk wat deze rate inhoud). Al snel was ik er over uit dat ik wereldwijde misdaad rate interessant vond en dat dit een fijne dataset is die ik wil gebruiken. Ik kies voor het tijdsinterval 2000-2017 omdat deze het meest compleet is.
 
 ## Week 1
 Deadlines:
@@ -13,30 +13,28 @@ Deadlines:
 Met feedback op mijn korte proposal maakte ik een aantal nieuwe beslissingen en aanpassingen voor mijn uiteindelijke proposal.
 
 #### Omvang
-Omdat de wereldwijde data incompleet was, besloot ik mij op enkel Europa te focussen.
+Omdat de wereldwijde data incompleet was, besloot ik tijdens mijn project enkel op Europa te focussen.
 
 #### Probleemstelling
 'Misdaad in Europa' is niet echt een probleem wat je kan onderzoeken of oplossen. De probleemstelling van het onderzoek wordt daarom gewijzigd naar 'Voornaamste soort misdaad per land'. Hierbij kan de uitkomst helpen met beslissen naar welke politie projecten geld moet gaan om de meeste misdaad te bestrijden.
 
 #### Opbouw figuren
-De eerste opbouw (wereldkaart --> double bar chart --> aster plot) moest vervangen worden. In de wereldkaart is namelijk maar 1 dimensie verwerkt en dat is niet genoeg om het onderwerp van dit project aan het licht te laten komen. Er is gekozen om de focus te leggen op de verhouding tussen Violent en Non-violent misdaad. De eerste figuur is dan ook een Sunburst (Land --> violent/non violent). De tweede figuur is gekozen voor een line chart die het verloop over tijd laat zien. De derde figuur is een bar chart die de getallen per subcategorie laat zien. Hiervoor wilde ik eerst een piechart gebruiken, maar deze leek te veel op een suburst. Daarnaast laat een bar chart goed onderscheid in categorien zien.
+De eerste opbouw (wereldkaart --> double bar chart --> aster plot) moest vervangen worden. In de wereldkaart is namelijk maar 1 dimensie verwerkt en dat is niet genoeg om het onderwerp van dit project goed aan het licht te laten komen. Er is gekozen om de focus te leggen op de verhouding tussen Violent en Non-violent misdaad. De eerste figuur is dan ook een Sunburst (Land --> violent/non violent). De tweede figuur is gekozen voor een line chart die het verloop over tijd laat zien. De derde figuur is een bar chart die de getallen per subcategorie laat zien. Hiervoor wilde ik eerst een piechart gebruiken, maar deze leek te veel op een suburst. Daarnaast laat een bar chart goed onderscheid in categorien zien.
 
 #### Data
 De data moet per misdaad subcategorie rate verzameld worden en samen worden gevoegd in 1 file voor ieder land. Ik weet nog niet zeker of dat goed gaat lukken en wat de verhoudingen tussen de rates zijn. Misschien valt het violent wel in het niet tegenover non violent of andersom. Dat gaan we woensdag zien...
-
 
 ### 4 juni
 Vandaag was het eerste mentorgesprek en maak ik de laatste beslissingen over mijn design.
 
 #### Probleemstelling
-Ik zette wat vraagtekens bij mijn probleemstelling: is het wel duidelijk genoeg? Ik probeerde meer mogelijkheden te vinden met mijn dataset. Misschien drugsgebruik linken aan misdaad, maar de data over drugsgebruik was (logisch genoeg) erg incompleet. Ik hield het er maar bij wat andere ideeen sloten niet aan bij een juiste 'probleemstelling'.
+Ik zette wat vraagtekens bij mijn probleemstelling: is het wel duidelijk genoeg? Ik probeerde meer mogelijkheden te vinden met mijn dataset. Misschien drugsgebruik linken aan misdaad, maar de data over drugsgebruik was (logisch genoeg) erg incompleet. Ik hield het er maar bij, want andere ideeen sloten niet aan bij een juiste 'probleemstelling'.
 
 #### Opbouw figuren
 De opbouw Sunburst -> line chart -> bar chart blijft. De Sunburst krijgt een extra dimensie, namelijk noord/oost/zuid/west Europa met een kleur.
 
 #### Knoppen
 Er wordt erop gewezen dat je ook knoppen moet toevoegen, dit was ik vergeten. Ik voeg bij de eerste suburst een slide toe voor het jaartal (2000 tot 2017). Daarnaast voeg ik bij de line chart een checkbox toe die violent, non violent, of allebei de lijnen laat zien.
-
 Het design en diagram werd in elkaar gezet dmv screenshots en pijlen.
 
 ### 5 juni
@@ -51,22 +49,20 @@ Het basis ontwerp voor de homepage werd gemaakt om te kijken wat de meest prakti
 #### Data
 Ik heb van Europa de een categorie violent (homicide rate) en non violent (theft rate) in 1 tabel gezet. Het was erg lastig omdat de landen en jaren niet compleet overeen kwamen van de verschillende data sets dus het kostte veel tijd. Dit om uit te proberen of het uberhaubt mogelijk is, en het daarna uit te breiden met meer categorien van violent en non violent. Het begin van de sunburst werd gemaakt maar gaf nog geen goed beeld, ik zou er morgen aan verder werken.
 
-
 ### 6 juni
 Verder werken aan de data en proberen deze vandaag op orde te krijgen.
 
 #### Data
-De gehele dag ben ik bezig geweest om alle data per categorie in de juiste format van jaren en landen te krijgen. Echter, op de helft bleek de data van de United ations Office on Drugs and Crime niet te kloppen. de data versprong verdacht raar, het leek of ze af en toe een 0 vergeten waren. Uit frustratie  probeerde ik andere data te zoeken over dit onderwerp maar helaas was er niet veel te vinden.
-
+De gehele dag ben ik bezig geweest om alle data per categorie in de juiste format van jaren en landen te krijgen. Echter, op de helft bleek de data van de United ations Office on Drugs and Crime niet te kloppen. de data versprong verdacht raar, het leek of ze af en toe een 0 vergeten waren. ik probeerde andere data te zoeken over dit onderwerp maar helaas was er niet veel te vinden.
 
 ### 7 juni
 Er leek niets anders op te zitten dan een nieuw onderwerp te bedenken, dus daar ben ik mee aan de slag gegaan. Dit keer zal ik eerst een complete dataset proberen te vinden, en daar een onderzoeksvraag bij vormen. Daarna wil ik doormiddel van andere datasets dit vraagstuk proberen te beantwoorden.
 
 #### Onderwerp
-Het onderwerp wordt het vliegverkeer binnen Europa per land per jaar (2005-2017, deze data is het meest compleet). De bron van alle datasets is ![ec Europe](https://ec.europa.eu/eurostat/statistics-explained/index.php/Air_transport_statistics). Het onderwerp trekt me aan en interesseert me, omdat ik altijd benieuwd ben hoe mensen op klimaatverandering reageren of hun eigen gedrag er naar aanpassen. De focus ligt op binnen Europa omdat het alternatief een trein kan zijn. De probleemstelling is dan ook: welke landen maken gemiddeld de meeste vluchten binnen Europa per inwoner?
+Het onderwerp wordt het vliegverkeer binnen Europa per land per jaar (2005-2017, deze data is het meest compleet). De bron van alle datasets is ![ec Europe](https://ec.europa.eu/eurostat/statistics-explained/index.php/Air_transport_statistics). Het onderwerp interesseert me omdat ik altijd benieuwd ben hoe mensen op klimaatverandering reageren of hun eigen gedrag er naar aanpassen. De focus ligt op binnen Europa omdat het alternatief een trein kan zijn. De probleemstelling is dan ook: welke landen maken gemiddeld de meeste vluchten binnen Europa per inwoner?
 
 #### Data
-De datasets worden verzameld en al in een excel bestand gezet om te kijken of ze kloppen en compleet zijn. Als eerste is dit het aantal vluchten per inwoner. Andere datasets die bij dit onderwerp betrokken zijn, zijn het aantal internationale treinritten per inwoner en de uitgaven van de overheid aan verbetering van milieu. De correlatie tussen deze onderwerpen kan erg interessant zijn. Om het aantal treinritten en vluchten per inwoner te berekenen, wordt de data van het aantal passagiers van internationale vluchten en treinritten binnen Europa per land gedeeld door de populatie van dat land. Door deze zelfgevormde dataset krijg ik een beter idee bij de rate per land.
+De datasets worden verzameld en in een excel bestand gezet om te kijken of ze kloppen en compleet zijn. Als eerste is dit het aantal vluchten per inwoner. Andere datasets die bij dit onderwerp betrokken zijn, zijn het aantal internationale treinritten per inwoner en de uitgaven van de overheid aan verbetering van milieu. De correlatie tussen deze onderwerpen kan erg interessant zijn. Om het aantal treinritten en vluchten per inwoner te berekenen, wordt de data van het aantal passagiers van internationale vluchten en treinritten binnen Europa per land gedeeld door de populatie van dat land. Door deze zelfgevormde dataset krijg ik een beter idee bij de rate per land.
 
 ## Week 2
 Vormgeving van het nieuwe onderwerp.
@@ -82,10 +78,10 @@ Er zijn 2 ideeen voor visualtisaties.
 * De tweede is een bubble chart. Ieder land is een bubbel, de grootte geeft het aantal vluchten aan en de kleur de overheidsuitgaven per land. Wanneer je op een land klikt, verschijnt er een line chart en een scatter plot. de line chart vormt op de x-as de jaren en de y-as het aantal vluchten. Bij de scatter staat op de y-as het aantal vluchten en de x-as kan je selecteren met een checkbox (overheidsuitgaven, treinritten etc.)
 
 #### Data
-Er moeten een aantal landen komen te vervallen omdat deze te incompleet zijn, bijvoorbeeld Croatie. Verder is de dataset van 2005 tot 2017 redelijk compleet en oogt bruikbaar.
+Er moeten een aantal landen komen te vervallen omdat deze te incompleet zijn, bijvoorbeeld Kroatie. Verder is de dataset van 2005 tot 2017 redelijk compleet en oogt bruikbaar.
 
 ### 11 juni
-Op sciencepark meer feedback en ideeën gekregen over mijn nieuwe idee. Deze werk ik uit en ik begin aan de eerste visualisatie.
+Op sciencepark heb ik meer feedback en ideeën gekregen over mijn nieuwe idee. Deze werk ik uit en ik begin aan de eerste visualisatie.
 
 #### Figuren
 Mijn groepje zei in de feedback dat de bubble chart het beste idee was, en dan de ecological footprint mee te nemen. Andere feedback die ik kreeg was een dubbele checkbox voor de scatterplot, zowel op de x als de y as dus. Hiermee kan je zelf kiezen wat je wil laten correleren. Hierdoor ziet mijn visualisatie er als volgt uit:
@@ -111,7 +107,7 @@ voor 2005 wordt er een begin gemaakt aan de bubble chart ter uitprobeersel.
 Vandaag vooral gewerkt aan het samenstellen van alle data en het maken van een voorbeeld html pagina.
 
 #### Data
-De data is eerst per categorie voor alle landen verzameld via ec Europe en de Global Footprint Network. De landen vormen hierbij de rijen en de jaren vormen de kolommen. De landen die veel data ontbraken heb ik eruit gehaald. Dit waren Bulgarije, Ierland, Malta, Kroatie, Hongarije en Zweden. Ook is de selectie van jaren beperkt gehouden om de data zo compleet mogelijk te laten. de jaren 2005 tot 2016 blijven hierbij over. In Excel worden de datasets van alle categorien onder elkaar geplaast. De dataset is ready!
+De data is eerst per categorie voor alle landen verzameld via ec Europe en de Global Footprint Network. De landen vormen hierbij de rijen en de jaren vormen de kolommen. De landen die veel data ontbraken heb ik eruit gehaald. Dit waren Bulgarije, Ierland, Malta, Kroatie, Hongarije en Zweden. Ook is de selectie van jaren beperkt gehouden om de data zo compleet mogelijk te laten. de jaren 2005 tot 2016 blijven hierbij over. In Excel worden de datasets van alle categorien onder elkaar geplaast. De dataset is klaar om gebruikt te worden.
 
 ![Preview](../Images/data.jpg)
 
@@ -125,13 +121,13 @@ Ik ben voornamelijk verder gegaan met de bubble chart.
 Als feedback kreeg ik om eerst de bubble chart in een voorbeeld HTML te maken, en pas aan het einde in de uiteindelijke HTML pagina's toe te voegen waaraan ik gister gewerkt heb. Dit zodat ik makkelijker aanpassingen kon maken.
 
 #### Bubble chart
-Ik ga verder met de bubble chart waaraan ik 11 juni was begonnen. Hierbij wordt de ecologische footprint vergeleken met het aantal vluchten per inwoner per jaar. Dit lukt wel aardig.
+Ik ga verder met de bubble chart waaraan ik 11 juni was begonnen. Hierbij wordt de ecologische footprint vergeleken met het aantal vluchten per inwoner per jaar. Dit lukt wel aardig door het volgen van You Tube filmpjes.
 
 ### 14 juni
 Vandaag lag de focus nog steeds op de bubblechart.
 
 #### Bubble chart
-Deze is nu compleet gemaakt met de juiste grootte voor de waarden. Ook zijn de kleuren op schaal gemaakt (van licht naar donker) en zit er verschil in kleur per deel van europa (noord, oost, zuid, west). Dit is slechts alleen nog voor het jaar 2005 gelukt.
+Deze is nu compleet gemaakt met de juiste grootte voor de waarden. Ook zijn de kleuren op schaal gemaakt (van licht naar donker) en zit er verschil in kleur per deel van europa (noord, oost, zuid, west). Dit is slechts alleen nog voor het jaar 2005 gelukt. Het lastige was de ligging van de bubbels. Het duurde een tijdje voor ik de 'Force' daarvoor goed heb gekregen.
 
 ![Preview](../Images/bubble.jpg)
 
@@ -153,7 +149,7 @@ Het was even nadenken hoe de data het best ingeladen kon worden. Via een json, d
 Tijd om de timeslider in elkaar te zetten!
 
 #### Slider
-Dit is gelukt via tutorials op het internet. De transition is nog niet helemaal naar wens. Maar dit bewaar ik voor de volgende week.
+Dit is gelukt via tutorials op het internet. De transition is nog niet helemaal naar wens, hij verwijdert en wordt opnieuw gemaakt. Maar dit bewaar ik voor de volgende week.
 
 ![Preview](../Images/slider.jpg)
 
@@ -171,13 +167,13 @@ Op de x as staat het tijdsverloop in jaren en er is een dubbele y as, want er wo
 ![Preview](../Images/linechart.jpg)
 
 #### Linked
-Wanneer je op de bubble van een land klikt (in welk jaartal dan ook) laat de linechart de tijdsverloop van dat jaar zien.
+Wanneer je op de bubble van een land klikt (in welk jaartal dan ook) laat de linechart de tijdsverloop van dat land zien. Zo kun je interessante onwtikkelingen van de variabelen van de bubbelchart beter bekijken.
 
 ### 20 juni
 Het laatste figuur, de scatterplot, wordt toegevoegd. Deze is niet nieuw voor me en ik kan de afmetingen van de linechart gebruiken wat erg scheelt. De checkbox wordt wel een uitdaging.
 
 #### Scatter plot
-De eerste punten waren snel gezet, maar er moeten veel variabelen gewijzigd kunnen worden, namelijk de x as, de y as en het jaartal. Via internet vond ik al snel een checkbox die ik in mijn html zette. Sommige data was incompleet bij de train rides, dat is wel erg storend. Door middel van een for loop worden de incomplete datapoints eruit verwijderd. Ook moet de titel telkens worden aangepast bij nieuwe updates.
+De eerste punten waren snel gezet, maar er moeten veel variabelen gewijzigd kunnen worden, namelijk de x-as, de y-as en het jaartal. Op internet vond ik al snel een checkbox die ik in mijn html zette. Sommige data was incompleet bij de train rides, dat is wel erg storend. Door middel van een for loop worden de incomplete datapoints eruit verwijderd. Ook moet de titel telkens worden aangepast bij nieuwe updates.
 
 ![Preview](../Images/scatter.jpg)
 ![Preview](../Images/checkbox.jpg)
@@ -186,7 +182,7 @@ De eerste punten waren snel gezet, maar er moeten veel variabelen gewijzigd kunn
 Vandaag heb ik alle figuren uit de voorbeeld html gehaald en in de echte html gezet.
 
 #### Data HTML
-Deze indeling was net iets anders dan gewend, hoe ging ik het neerzetten? Het meest struggelde ik met de checkbox. Deze verdween zo uit het zicht als hij onder de scatterplot kwam, dat ik hem maar in de container van de bubble chart heb gezet, rechts onderin. de rest van de indeling sprak erg voor zich, alleen de marges moesten erg gewijzigd worden en het plaatsen van de titels was lastig.
+Deze indeling was net iets anders dan gewend, hoe ging ik het neerzetten? Het meeste moeite had ik met de checkbox. Deze verdween uit het zicht als hij onder de scatterplot kwam, dat ik hem maar in de container van de bubble chart heb gezet, rechts onderin. de rest van de indeling sprak erg voor zich, alleen de marges moesten erg gewijzigd worden en het plaatsen van de titels was lastig.
 
 ## Week 4
 Deadlines:
